@@ -35,7 +35,8 @@ TelegramTagBot, qrup çatında bütün üzvləri işarələməyə imkan verən P
 3. **Set up your Telegram bot** / **Telegram botunuzu qurun**:
 
     - Create a new bot on Telegram by talking to [BotFather](https://t.me/BotFather).
-    - Get your `api_id`, `api_hash`, and `bot_token` from BotFather.
+    - Get your `bot_token` from BotFather.
+    - Get your `api_id`, `api_hash` from [Account Center](https://my.telegram.org/apps)
     - [BotFather](https://t.me/BotFather) ilə danışaraq Telegramda yeni bot yaradın.
     - `api_id`, `api_hash` və `bot_token` məlumatlarınızı BotFather-dan əldə edin.
 
