@@ -46,7 +46,7 @@ TelegramTagBot, qrup çatında bütün üzvləri işarələməyə imkan verən P
     Skriptdəki yer tutucuları məlumatlarınızla əvəz edin.
 
     ```python
-    api_id = YOUR_API_ID  # write api_id
+    api_id = 'YOUR_API_ID'  # write api_id
     api_hash = 'YOUR_API_HASH'  # write api_hash
     bot_token = 'YOUR_BOT_TOKEN'  # write bot_token
     your_telegram_username = 'YOUR_TELEGRAM_USERNAME'  # without @ / @ işarəsi olmadan
