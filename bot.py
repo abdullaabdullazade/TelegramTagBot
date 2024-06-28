@@ -24,7 +24,7 @@ start_text = (
 )
 help_text = (
     "/start   -   Check if the bot is working.\n"
-    "/all   -   Tag everyone in the group.\n"
+    "/all   -   Tag everyone in the group. For example: /all your_message\n"
     "/close - Stop tagging.\n\n\n"
     "❗️Note: I need to be an admin to tag everyone.\n"
     f"⚠️ For comments or suggestions, write to @{your_telegram_username}."
