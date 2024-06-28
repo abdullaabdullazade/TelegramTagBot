@@ -3,11 +3,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 import sqlite3 as sql
 
-app = Client("AzTagger", api_id=13016641, api_hash='a8385d296e8b826994bee14b83cf988b',
-             bot_token='6655665760:AAGOwXveL9R3YjHEJ95gQKZmLtW8b1K6JhI')
+api_id = 0000000  # write api_id
+api_hash = ''     # write api_hash
+bot_token = ''    # write bot_token
 
-your_telegram_username = 'codejavascript'  # without @
-your_telegram_bot_username = 'aztagger_bot'  # without @
+app = Client("Botname", api_id=api_id, api_hash=api_hash,
+             bot_token=bot_token)
+
+your_telegram_username = ''  # without @
+your_telegram_bot_username = ''  # without @
 
 buttons_start = [
     [InlineKeyboardButton("📌Add me to your group", url=f'https://t.me/{your_telegram_bot_username}?startgroup=hbase')]
@@ -37,7 +41,10 @@ admins_owner = [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWN
 tags = {}
 
 def check_admin(msg):
-    status = app.get_chat_member(msg.chat.id, msg.from_user.id).status
+    try:
+        status = app.get_chat_member(msg.chat.id, msg.from_user.id).status
+    except:
+        return True   # for anonyms admins
     return status in admins_owner
 
 def add_user(msg):
@@ -86,23 +93,20 @@ def help_group(bot, msg):
 @app.on_message(filters.command('all') & filters.group)
 def all(bot, msg):
     global tags
-    try:
-        bot.delete_messages(msg.chat.id, msg.id)
-    except:
-        msg.reply(must_be_admin_text)
-        return
-
-    tags[msg.chat.id] = True
-
+    bot.delete_messages(msg.chat.id, msg.id)
     if check_admin(msg):
+        tags[msg.chat.id] = True
         tag(msg)
+    else:
+        msg.reply(must_be_admin_text)
+        
 
 @app.on_message(filters.command('close') & filters.group)
 def close(bot, msg):
     global tags
     if check_admin(msg) and tags.get(msg.chat.id):
-        bot.delete_messages(msg.chat.id, msg.id)
         tags[msg.chat.id] = False
+        bot.delete_messages(msg.chat.id, msg.id)
 
 print("Online")
 app.run()
